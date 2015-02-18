@@ -1,8 +1,8 @@
 #AWSCognitoSampleDeveloperAuthenticationSample
 
-This is a sample application for running a service that authenticates users, to demonstrate the developer authenticated feature of Amazon Cognito. Currently, this sample code can be used in conjunctions with the Mobile SDKs for iOS and Android. Follow the quick start steps to deploy the sample quickly using Amazon CloudFormation. To build the sample yourself and deploy using Amazon Elastic Beanstalk follow the "Building and deploying the sample yourself" section.
+This is a sample application for running a service that authenticates users, to demonstrate the developer authenticated feature of Amazon Cognito. Currently, this sample code can be used in conjunctions with the Mobile SDKs for iOS and Android. [Create](#CreatePool) or [edit](#EditPool) the identity pool to support developer authenticated identities. Follow the [quick start steps](#QuickStart) to deploy the sample quickly using Amazon CloudFormation. To build the sample yourself and deploy using Amazon Elastic Beanstalk follow the ["Building and deploying the sample yourself"](#SelfStart) section. 
 
-#Creating an identity pool
+# <a name="CreatePool"></a> Creating an identity pool
 * If you have not created an identity pool that supports developer authenticated identities, follow these instructions, else skip to next step.
 * Go to [Amazon Cognito Console](https://console.aws.amazon.com/cognito/home), click on 'New  Identity Pool'.
 	* Provide a valid identity pool name.
@@ -11,14 +11,14 @@ This is a sample application for running a service that authenticates users, to 
 * To allow Cognito to create roles on your behalf for the identity pool, click 'Update Roles'.
 * Use the identity pool id provided in your sample by following the ReadMe instructions of the sample (Android/iOS) you want to try.
 
-#Editing an identity pool
+# <a name="EditPool"></a> Editing an identity pool
 * If you have an identity pool that does not support developer authenticated identities, follow these instructions
 * Go to [Amazon Cognito Console](https://console.aws.amazon.com/cognito/home), open the identity pool you want to edit and click on 'Edit Identity Pool'
 	* In the Developer Authenticated Identities section, provide a developer provider name which you want to use for your application. (E.g. login.myapp).
 	* Click 'Save Changes'.
 * Use the identity pool id provided in your sample by following the ReadMe instructions of the sample (Android/iOS) you want to try.
 
-#Quick Start to run the server application
+# <a name="QuickStart"></a> Quick Start to run the server application
 * Go to [Amazon CloudFormation console](https://console.aws.amazon.com/cloudformation/home) and click on 'Create Stack'.
 * Provide the stack name and this [S3 URL](https://s3.amazonaws.com/cognito-developer-authentication-sample/AWSCognitoDeveloperAuthenticationSampleCFN.json) as a template. Click 'Next'.
 * Provide the identity pool id and developer provider name, click 'Next'.
@@ -27,7 +27,7 @@ This is a sample application for running a service that authenticates users, to 
 * Please allow the stack to finish creation of all the resources. Once the stack is created, it will give the ApplicationURL in the output tab. Use this URL in the Android/iOS sample.
 * You can register users using any web browser using ElasticBeanStalkApplicationURL/jsp/register.jsp
 
-#Building and deploying the server application yourself
+# <a name="SelfStart"></a> Building and deploying the server application yourself
 * Build the sample to get the war file using "maven clean install". You will need [Apache Maven](http://maven.apache.org/download.cgi) installed on your system to run this command.
 * Go to AWS Console for [ElasticBeanStalk](https://console.aws.amazon.com/elasticbeanstalk).
 * Click on 'Create New Application'

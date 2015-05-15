@@ -217,7 +217,7 @@ table.information-box td p {
 
 table.information-box td.th {
 	text-align: right;
-	width: 33%;
+	width: 20%;
 }
 
 table.information-box td input[type=text],
@@ -225,6 +225,12 @@ table.information-box td input[type=password] {
 	font-size: 16px;
 	line-height: 1.3em;
 	width: 300px;
+}
+
+table.information-box td span {
+	font-size: 12px;
+	line-height: 1.0em;
+	width: 20%;
 }
 
 p.message {

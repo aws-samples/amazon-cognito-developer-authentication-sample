@@ -15,49 +15,87 @@
 
 <%@page import="main.java.com.amazonaws.cognito.devauthsample.Constants"%>
 <%@page import="main.java.com.amazonaws.cognito.devauthsample.Utilities"%>
-<%@page import="main.java.com.amazonaws.cognito.devauthsample.Configuration"%>
-<%@ page session="true" %>
+<%@page
+	import="main.java.com.amazonaws.cognito.devauthsample.Configuration"%>
+<%@ page session="true"%>
 
 <html>
-	<head>
-		<title><%=Configuration.APP_NAME %> - Welcome</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/styles.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/styles-mobile.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/styles-tablet.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	</head>
+<head>
+<title>Amazon Cognito Developer Authentication Sample - Welcome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/jsp/css/styles.css"
+	type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/jsp/css/styles-mobile.css"
+	type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/jsp/css/styles-tablet.css"
+	type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
 
-    <body class="success">
-		<div id="header">
-			<h1><%=Configuration.APP_NAME %></h1>
-		</div>
+<body class="success">
+	<div id="header">
+		<h1>Amazon Cognito Developer Authentication Sample</h1>
+	</div>
 
-		<div id="body">
-			<fieldset>
-				<legend>Congratulations!</legend>
-				<p class="message">Cognito Developer Authentication Sample is running with user registration.</p>
-			</fieldset>
-		</div>
-		
-		<% if( Utilities.isEmpty(Configuration.DEVELOPER_PROVIDER_NAME) || Utilities.isEmpty(Configuration.IDENTITY_POOL_ID) ) {%>
-		<p class="warning">Warning: Your Cognito Developer Authentication Sample is not properly configured.</p>
-		<%} %>
-		
-		<%
-		int port = request.getServerPort();
-		if(443 != port) {
-			if(response instanceof HttpServletResponse) {
-		%>
-		<p class="warning">Warning: You are not running SSL.</p>
-		<%
-			}	
-		}
-		%>
+	<div id="body">
+		<fieldset>
+			<legend>Congratulations!</legend>
+			<p class="message">You have successfully configured the Cognito
+				Developer Authentication Sample.</p>
+		</fieldset>
+		<fieldset>
+			Next steps
+			<ul>
+				<li><a href="jsp/register.jsp">Register a user</a> to use in
+					the samples.</li>
+				<li>Configure the <a
+					href="https://github.com/awslabs/aws-sdk-android-samples/tree/master/CognitoSyncDemo">Android
+						Sample</a> by following the instructions for developer authenticated
+					identities in the ReadMe file.
+				</li>
+				<li>Configure the <a
+					href="https://github.com/awslabs/aws-sdk-ios-samples/tree/master/CognitoSync-Sample/Objective-C">Objective
+						C sample</a> by following the instructions for developer authenticated
+					identities in the ReadMe file.
+				</li>
+				<li>Refer to the <a
+					href="https://github.com/awslabs/amazon-cognito-developer-authentication-sample">ReadMe</a>
+					for this application for any issues.
+				</li>
+			</ul>
+		</fieldset>
+	</div>
 
-		<div id="footer">
-			<p class="footnote"><%=Configuration.APP_NAME %> - AWSCognitoDeveloperAuthenticationSample</p>
-		</div>
-    </body>
-    
+	<%
+	    if (Utilities.isEmpty(Configuration.DEVELOPER_PROVIDER_NAME)
+	            || Utilities.isEmpty(Configuration.IDENTITY_POOL_ID)) {
+	%>
+	<p class="warning">Warning: Your Cognito Developer Authentication
+		Sample is not properly configured.</p>
+	<%
+	    }
+	%>
+
+	<%
+	    int port = request.getServerPort();
+	    if (443 != port) {
+	        if (response instanceof HttpServletResponse) {
+	%>
+	<p class="warning">Warning: You are not running SSL.</p>
+	<%
+	    }
+	    }
+	%>
+
+	<div id="footer">
+		<p class="footnote"><%=Configuration.APP_NAME%>
+			- AWSCognitoDeveloperAuthenticationSample
+		</p>
+	</div>
+</body>
+
 </html>

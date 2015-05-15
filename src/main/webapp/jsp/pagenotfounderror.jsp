@@ -18,7 +18,7 @@
 
 <html>
 	<head>
-		<title><%=Configuration.APP_NAME %> - Error</title>
+		<title>Amazon Cognito Developer Authentication Sample - Error</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/styles.css" type="text/css" media="screen" charset="utf-8">
@@ -28,7 +28,7 @@
 
     <body>
 		<div id="header">
-			<h1><%=Configuration.APP_NAME %></h1>
+			<h1>Amazon Cognito Developer Authentication Sample</h1>
 		</div>
 
 		<div id="body">

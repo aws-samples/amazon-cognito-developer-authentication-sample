@@ -40,6 +40,7 @@ import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
+import com.amazonaws.regions.RegionUtils;
 
 /**
  * This class is used to store and authenticate devices. All devices and their
@@ -74,8 +75,8 @@ public class DeviceAuthentication {
      */
     public DeviceAuthentication() {
         ddb = new AmazonDynamoDBClient();
-        //ddb.setEndpoint(Configuration.DYNAMODB_ENDPOINT);
-
+        ddb.setRegion(RegionUtils.getRegion(Configuration.REGION));
+        
         try {
             if (!doesTableExist(DEVICE_TABLE)) {
                 createDeviceTable();

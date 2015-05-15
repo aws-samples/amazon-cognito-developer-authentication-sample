@@ -101,7 +101,7 @@
 						"Description": "Release version",
 						"SourceBundle": 
 						{
-							"S3Bucket": "cognito-developer-authentication-sample",
+							"S3Bucket": { "Fn::Join": ["-", [ "amazon-cognito-samples", { "Ref": "AWS::Region" } ] ] },
 							"S3Key": "CognitoDevAuthSample.war"
 						}
 					}
@@ -158,6 +158,14 @@
 								{
 									"Ref": "DeveloperProviderName"
 								}
+							},
+							{
+							    "Namespace": "aws:elasticbeanstalk:application:environment",
+							    "OptionName": "REGION",
+							    "Value":
+							    {
+							        "Ref": "AWS::Region"
+							    }
 							}
 						]
 					}

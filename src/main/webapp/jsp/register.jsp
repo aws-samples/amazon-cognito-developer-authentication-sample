@@ -17,9 +17,30 @@
 <%@page import="main.java.com.amazonaws.cognito.devauthsample.Configuration"%>
 <%@ page session="true" %>
 
+<script type="text/javascript">
+	function validateForm() {
+		document.getElementById("userNameErrorMessage").innerHTML=null;
+		document.getElementById("passwordErrorMessage").innerHTML=null;
+		var uName = document.forms["register"]["username"].value;
+		var validUserNameRegex = /^[0-9a-zA-Z@._]{3,128}$/;
+	    if (!validUserNameRegex.test(uName)) {
+	        document.getElementById("userNameErrorMessage").innerHTML = "Choose a user name between 3 to 128 characters. Allowed characters are letters, digits, '@', '_' and '.'";
+	        return false;
+	    }
+	    
+	    var validPasswordRegex = /.{6,12}/;
+	    var pwd = document.forms["register"]["password"].value;
+	    if (!validPasswordRegex.test(pwd)) {
+	        document.getElementById("passwordErrorMessage").innerHTML = "Choose a password between 6 to 128 characters.";
+	        return false;
+	    }
+	    return true;
+	}
+</script>
+
 <html>
 	<head>
-		<title><%=Configuration.APP_NAME %> - Register</title>
+		<title>Amazon Cognito Developer Authentication Sample - Register</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/styles.css" type="text/css" media="screen" charset="utf-8">
@@ -29,13 +50,13 @@
 	<body class="register">
 
 		<div id="header">
-			<h1><%=Configuration.APP_NAME %></h1>
+			<h1>Amazon Cognito Developer Authentication Sample</h1>
 		</div>
 
 		<div id="body">
 			<fieldset>
 				<legend>Register</legend>
-				<form id="register" name="register" action="/registeruser" method="POST">
+				<form id="register" name="register" onsubmit="return validateForm()" action="/registeruser" method="POST">
 
 					<table class="information-box">
 						<tbody>
@@ -44,7 +65,11 @@
 									<p><strong>Username:</strong></p>
 								</td>
 								<td>
-									<p><input type="text" name="username" value="" placeholder="username" title="Choose a user name between 3 to 128 characters. Allowed characters are letters, digits, '@', '_' and '.'."></p>
+									<p><input type="text" name="username" value="" placeholder="username" 
+										title="Choose a user name between 3 to 128 characters. Allowed characters are letters, digits, '@', '_' and '.'" required></p>
+								</td>
+								<td>
+								<span id="userNameErrorMessage" style="color:red"></span>
 								</td>
 							</tr>
 							<tr>
@@ -52,9 +77,11 @@
 									<p><strong>Password:</strong></p>
 								</td>
 								<td>
-									<p><input type="password" name="password" value="" placeholder="password" title="Choose a password between 6 to 128 characters."></p>
+									<p><input type="password" name="password" value="" placeholder="password" title="Choose a password between 6 to 128 characters." required></p>
 								</td>
-
+								<td>
+								<span id="passwordErrorMessage" style="color:red"></span>
+								</td>
 							</tr>
 							<tr>
 								<td class="th">&nbsp;</td>

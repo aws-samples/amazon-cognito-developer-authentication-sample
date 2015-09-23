@@ -68,6 +68,8 @@ When finished setting up an identity pool, proceed to Option 1 or Option 2 below
 		
 		EU (Ireland) : https://s3.amazonaws.com/amazon-cognito-samples-eu-west-1/AWSCognitoDeveloperAuthenticationSampleCFN.json
 		
+		Asia Pacific (Tokyo) : https://s3.amazonaws.com/amazon-cognito-samples-ap-northeast-1/AWSCognitoDeveloperAuthenticationSampleCFN.json
+		
 4. Enter the DeveloperProviderName and IdentityPoolId associated with the identity pool you want to use, and then click **Next**.
 5. On the **Options** page, click **Next**.
 6. On the **Review** page, review the details and select the checkbox acknowledging that your template has capabilities to create AWS IAM resources. When finished, click **Create**. It may take several minutes for the stack to finish creating resources. 
